@@ -15,15 +15,22 @@ npm install --save material-ui-admin
 ```jsx
 import React, { Component } from 'react'
 
-import MyComponent from 'material-ui-admin'
+import { MaterialUIAdmin } from 'material-ui-admin'
+import SideDrawer from './SideDrawer'
+import SideMenu from './sideMenu'
 
-class Example extends Component {
-  render () {
+export default class App extends Component {
+  render() {
     return (
-      <MyComponent />
+      <div>
+        <MaterialUIAdmin title='Material UI Admin' sideDrawer={<SideDrawer />} sideMenu={<SideMenu />}>
+          <h1>Dashboard</h1>
+        </MaterialUIAdmin>
+      </div>
     )
   }
 }
+
 ```
 
 ## License

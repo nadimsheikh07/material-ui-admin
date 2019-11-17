@@ -2,9 +2,21 @@
   "name": "material-ui-admin",
   "version": "1.0.0",
   "description": "material ui admin",
-  "author": "nadimsheikh07",
+  "keywords": [
+    "react",
+    "material",
+    "material-design",
+    "material-ui",
+    "mui",
+    "admin",
+    "material-ui-admin"
+  ],
+  "author": "nadim sheikh (nadim.sheikh.07@gmail.com)",
   "license": "MIT",
-  "repository": "material-ui-admin",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nadimsheikh07/material-ui-admin.git"
+  },
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
@@ -22,6 +34,8 @@
     "deploy": "gh-pages -d example/build"
   },
   "peerDependencies": {
+    "@material-ui/core": "^4.6.1",
+    "@material-ui/icons": "^4.5.1",
     "prop-types": "^15.5.4",
     "react": "^15.0.0 || ^16.0.0",
     "react-dom": "^15.0.0 || ^16.0.0"
