@@ -74,7 +74,7 @@ const styles = theme => ({
 
 class MaterialUIAdmin extends React.Component {
     state = {
-        open: false,
+        open: true,
     }
 
     handleDrawerOpen = () => {
@@ -85,6 +85,16 @@ class MaterialUIAdmin extends React.Component {
         this.setState({ open: false })
     };
 
+    componentDidMount() {
+        window.addEventListener("resize", this.resize.bind(this));
+        this.resize();
+    }
+
+    resize() {
+        if (window.innerWidth <= 981) {
+            this.handleDrawerClose();
+        }
+    }
 
 
     render() {
