@@ -12,7 +12,7 @@ import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from '@material-ui/icons/Menu'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 
-const drawerWidth = 240
+const drawerWidth = 250
 
 const styles = theme => ({
   root: {
@@ -77,86 +77,89 @@ const styles = theme => ({
 })
 
 class MaterialUIAdmin extends React.Component {
-    state = {
-      open: true
+  state = {
+    open: true
+  }
+
+  handleDrawerOpen = () => {
+    this.setState({ open: true })
+  };
+
+  handleDrawerClose = () => {
+    this.setState({ open: false })
+  };
+
+  componentDidMount() {
+    window.addEventListener('resize', this.resize.bind(this))
+    this.resize()
+  }
+
+  resize() {
+    if (window.innerWidth <= 981) {
+      this.handleDrawerClose()
     }
+  }
 
-    handleDrawerOpen = () => {
-      this.setState({ open: true })
-    };
+  render() {
+    const { classes, children, title, sideDrawer, sideMenu, logo } = this.props
+    const { open } = this.state
 
-    handleDrawerClose = () => {
-      this.setState({ open: false })
-    };
-
-    componentDidMount() {
-      window.addEventListener('resize', this.resize.bind(this))
-      this.resize()
-    }
-
-    resize() {
-      if (window.innerWidth <= 981) {
-        this.handleDrawerClose()
-      }
-    }
-
-    render() {
-      const { classes, children, title, sideDrawer, sideMenu } = this.props
-      const { open } = this.state
-
-      return (
-        <div className={classes.root}>
-          <CssBaseline />
-          <AppBar
-            position='fixed'
-            className={clsx(classes.appBar, {
-              [classes.appBarShift]: open
-            })}
-          >
-            <Toolbar>
-              <IconButton
-                color='inherit'
-                aria-label='open drawer'
-                onClick={this.handleDrawerOpen}
-                edge='start'
-                className={clsx(classes.menuButton, open && classes.hide)}
-              >
-                <MenuIcon />
-              </IconButton>
-              <Typography variant='h6' noWrap>
-                {title}
-              </Typography>
-              <div className={classes.grow} />
-              {sideMenu}
-            </Toolbar>
-          </AppBar>
-          <Drawer
-            className={classes.drawer}
-            variant='persistent'
-            anchor='left'
-            open={open}
-            classes={{
-              paper: classes.drawerPaper
-            }}
-          >
-            <div className={classes.drawerHeader}>
-              <IconButton onClick={this.handleDrawerClose}>
-                <ChevronRightIcon />
-              </IconButton>
+    return (
+      <div className={classes.root}>
+        <CssBaseline />
+        <AppBar
+          position='fixed'
+          className={clsx(classes.appBar, {
+            [classes.appBarShift]: open
+          })}
+        >
+          <Toolbar>
+            <IconButton
+              color='inherit'
+              aria-label='open drawer'
+              onClick={this.handleDrawerOpen}
+              edge='start'
+              className={clsx(classes.menuButton, open && classes.hide)}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography variant='h6' noWrap>
+              {title}
+            </Typography>
+            <div className={classes.grow} />
+            {sideMenu}
+          </Toolbar>
+        </AppBar>
+        <Drawer
+          className={classes.drawer}
+          variant='persistent'
+          anchor='left'
+          open={open}
+          classes={{
+            paper: classes.drawerPaper
+          }}
+        >
+          <div className={classes.drawerHeader}>
+            <div className={classes.logo}>
+              {logo}
             </div>
-            <Divider />
-            {sideDrawer}
-          </Drawer>
-          <main
-            className={clsx(classes.content, {
-              [classes.contentShift]: open
-            })}
-          >
-            {children}
-          </main>
-        </div>
-      )
-    }
+            <IconButton onClick={this.handleDrawerClose}>
+              <ChevronRightIcon />
+            </IconButton>
+          </div>
+          <Divider />
+          {sideDrawer}
+        </Drawer>
+        <main
+          className={clsx(classes.content, {
+            [classes.contentShift]: open
+          })}
+        >
+          {children}
+        </main>
+      </div>
+    )
+  }
 }
 
 export default withStyles(styles)(MaterialUIAdmin)

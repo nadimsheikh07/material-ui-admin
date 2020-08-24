@@ -4,11 +4,21 @@ import { MaterialUIAdmin } from 'material-ui-admin'
 import SideDrawer from './SideDrawer'
 import SideMenu from './sideMenu'
 
+import LogoImage from './logo.png'
+
+const AppTitle = () => {
+  return (
+    <div style={{ textAlign: 'center' }}>
+      <img width={180} height={50} src={LogoImage} alt="Material UI Admin" />
+    </div>
+  )
+}
+
 export default class App extends Component {
   render() {
     return (
       <div>
-        <MaterialUIAdmin title='Material UI Admin' sideDrawer={<SideDrawer />} sideMenu={<SideMenu />}>
+        <MaterialUIAdmin logo={<AppTitle />} title='Material UI Admin' sideDrawer={<SideDrawer />} sideMenu={<SideMenu />}>
           <h1>Dashboard</h1>
           <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
           <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
